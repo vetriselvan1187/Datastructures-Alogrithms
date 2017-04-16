@@ -48,11 +48,37 @@ public class LinkedList {
 	}
 
 
-	public void printList() {
-		while(head != null) {
-			System.out.print(head.data+" ");
-			head = head.next;
+	public void print() {
+		Node temp = head;
+		while(temp != null) {
+			System.out.print(temp.data+" ");
+			temp = temp.next;
 		}
+	}
+
+	public void print(int offset) {
+		Node temp = head;
+		int pos = 0;
+		while(temp != null) {
+			if(pos < offset) {
+				pos++;
+			} else {
+				System.out.print(temp.data+" ");
+			}
+			temp = temp.next;
+		}
+	}
+
+	public void reversePrint() {
+		reverse(head);
+	}
+
+	public void reverse(Node temp) {
+		if(temp == null) {
+			return;
+		}
+		reverse(temp.next);
+		System.out.print(temp.data+" ");
 	}
 
 	public static void main(String args[]) {
@@ -61,7 +87,13 @@ public class LinkedList {
 		list.add(20);
 		list.add(30);
 		list.add(40);
-		list.printList();
+		list.add(50);
+		list.add(60);
+		list.print();
+		System.out.println();
+		list.print(2);
+		System.out.println();
+		list.reversePrint();
 	}
 
 
